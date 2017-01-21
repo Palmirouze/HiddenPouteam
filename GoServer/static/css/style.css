@@ -25,7 +25,7 @@ body{
     width: 80%;
     font: 16px Arial, Helvetica;
     border: 1px solid dimgrey;
-    border-right:1px solid #c0c0c0;
+    border-right:0px solid black;
     padding: 5px 10px;
 
 }
@@ -41,13 +41,12 @@ body{
     width: 50px;
     cursor: pointer;
     font: bold 14px Arial, Helvetica;
-    color: #dbdbdb;
+    color: white;
 
 
 }
 
 #submit:hover {
-    color:white;
 
 }
 
