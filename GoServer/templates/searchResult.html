@@ -1,12 +1,6 @@
-<html>
-<head>
-    <title>Search results!</title>
-</head>
-<body>
 <ul>
 {{ range $index, $item := . }}
     <li>{{template "item" $item}}</li>
 {{ end }}
 </ul>
-</body>
-</html>
+
