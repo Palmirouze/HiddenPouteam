@@ -7,7 +7,8 @@ import (
 	"gopkg.in/mgo.v2"
 
 	"fmt"
-
+	"../config"
+	"gopkg.in/mgo.v2/bson"
 )
 
 //hold database information
@@ -18,17 +19,23 @@ type Database struct{
 
 }
 
-
+type Item struct{
+	Id bson.ObjectId `json:"id" bson:"_id,omitempty"`
+	Name string
+	Price float64
+}
 
 //connects to database and return Database
 
-func ConnectToDatabase(url string) *Database{
+func ConnectToDatabase() *Database{
 
-	fmt.Println("Connection to database on url "+url)
+	dbUrl := config.MainConfig.Database.Url
+
+	fmt.Println("Connection to database on url "+dbUrl)
 
 
 
-	session, err := mgo.Dial(url)
+	session, err := mgo.Dial(dbUrl)
 
 	if err != nil{
 
