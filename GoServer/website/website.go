@@ -7,8 +7,6 @@ import (
 
 "net/http"
 
-"../config"
-
 "../database"
 
 "html/template"
@@ -23,11 +21,10 @@ var db *database.Database
 
 
 
-var configuration *config.Configuration
 
 
 
-var templates = template.Must(template.ParseFiles("templates/base.html", "templates/movies.html", "templates/home.html", "templates/test1.html"))
+var templates = template.Must(template.ParseFiles("templates/base.html", "templates/item.html", "templates/home.html", "templates/test1.html" ,"templates/item.html"))
 
 
 
@@ -37,13 +34,11 @@ func StartWebsite(){
 
 	//load configuration
 
-	configuration = config.GetConfig("config.json")
-
 
 
 	//connect to database defined in config
 
-	db = database.ConnectToDatabase(configuration.Database.Url)
+	db = database.ConnectToDatabase()
 
 	defer db.CloseDatabase()
 
@@ -72,15 +67,14 @@ func startHttpServer(){
 	//api
 
 	http.HandleFunc("/api/search", searchApiHandler)
-
+	http.HandleFunc("/api/item/", itemApiHandler)
 	http.HandleFunc("/api/", apiHandler)
 
 
 
 	//main
-
-	http.HandleFunc("/movies/", moviesHandler)
 	http.HandleFunc("/test1.html/", testHandler)
+	http.HandleFunc("/item/", itemHandler)
 
 	http.HandleFunc("/", indexHandler)
 
