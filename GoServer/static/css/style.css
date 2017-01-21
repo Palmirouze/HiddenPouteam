@@ -1,3 +1,51 @@
 body{
-    background-color:red;
+    background-color:white;
 }
+
+.flexContainerHeader {
+    display: flex;
+    height: 70px;
+    width: 100%;
+    background: lightgrey;
+}
+
+#searchbox {
+    margin: auto 10% auto 10%;
+}
+
+
+#search {
+    height: 40px;
+    width: 100%;
+    font: 16px Arial, Helvetica;
+    border: 1px solid dimgrey;
+    padding: 5px 10px;
+
+
+}
+
+/* ----------------------- */
+
+#submit
+{
+    border:1px solid dimgrey;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    font: bold 14px Arial, Helvetica;
+    color: white;
+
+}
+
+#submit:hover {
+    background-color: black;
+
+}
+
+#logo {
+    height: 100px;
+    width: 100px;
+}
+
+
+
