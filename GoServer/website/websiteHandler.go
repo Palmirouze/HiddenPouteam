@@ -4,6 +4,7 @@ import (
 	"net/http"
 	"gopkg.in/mgo.v2/bson"
 	"github.com/qiniu/log"
+	"fmt"
 )
 
 
@@ -26,6 +27,7 @@ func testHandler(w http.ResponseWriter, r *http.Request){
 
 //displays a list of movie titles using tempalates
 func itemHandler(w http.ResponseWriter, r *http.Request){
+	fmt.Println(r.URL.Path)
 	itemId := bson.ObjectIdHex(r.URL.Path[len("/item/"):])
 
 	item, err := db.GetItemById(itemId)
