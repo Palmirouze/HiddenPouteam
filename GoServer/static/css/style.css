@@ -10,7 +10,6 @@ body{
 }
 
 #searchbox {
-    margin: auto 10% auto 10%;
 }
 
 
@@ -20,8 +19,6 @@ body{
     font: 16px Arial, Helvetica;
     border: 1px solid dimgrey;
     padding: 5px 10px;
-
-
 }
 
 /* ----------------------- */
@@ -29,8 +26,8 @@ body{
 #submit
 {
     border:1px solid dimgrey;
-    height: 30px;
-    width: 30px;
+    height:40px;
+    width: 40px;
     cursor: pointer;
     font: bold 14px Arial, Helvetica;
     color: white;
@@ -43,8 +40,8 @@ body{
 }
 
 #logo {
-    height: 100px;
-    width: 100px;
+    height: 80px;
+    width: 80px;
 }
 
 
