@@ -6,40 +6,25 @@ class Kijiji_Spider(scrapy.Spider):
 
     def start_requests(self):
 
-        categories = [
-            'b-cellulaire',
-        ]
+        url_root = 'http://www.kijiji.ca/'
 
-        cell_brands = [
-            'motorola',
-            'apple',
-            'blackberry',
-            'htc',
-            'lg',
-            'ericsson',
-            'nokia',
-            'samsung',
-            'sony',
-            'sony+ericsson',
-        ]
+        cells = {
+            'motorola' : ['moto G', 'moto Z', 'G4'],
+            'apple' : ['iPhone 7', 'iPhone 6S', 'iPhone 6', 'iPhone 5S', 'iPhone 5C', 'iPhone 5', 'iPhone 4S', 'iPhone 4'],
+            'blackberry' : ['Curve 9360' , '9720', 'Bold 9900', 'Q5', 'Q10', 'Q20', 'Z10', 'Z30'],
+            'htc' : ['M7', 'M8', 'M9'],
+            'lg' : ['G3', 'G4'],
+        }
 
         locations = [
             'grand-montreal',
         ]
 
-        params = [
-            '?ad=offering',
-        ]
-
         for location in locations:
-            for cell_brand in cell_brands:
-
-        urls = [
-            'http://quotes.toscrape.com/page/1/',
-            'http://quotes.toscrape.com/page/2/',
-        ]
-        for url in urls:
-            yield scrapy.Request(url=url, callback=self.parse)
+            for brand in cells:
+                for model in cells[brand]:
+                    url = url_root + '/b-cellulaire/' + location + '/' + brand + '?ad=offering'
+                yield scrapy.Request(url=url, callback=self.parse)
 
     def parse(self, response):
         page = response.url.split("/")[-2]
