@@ -25,22 +25,20 @@ func testHandler(w http.ResponseWriter, r *http.Request){
 }
 
 //displays a list of movie titles using tempalates
-func moviesHandler(w http.ResponseWriter, r *http.Request){
-	//create database connection
-	c := db.Session.DB("codejam").C("movies")
-	var results []interface{}
+func itemHandler(w http.ResponseWriter, r *http.Request){
+	itemId := bson.ObjectIdHex(r.URL.Path[len("/item/"):])
 
-	//get all the results in database and map it to results
-	err := c.Find(bson.M{}).All(&results)
+	item, err := db.GetItemById(itemId)
 
 	if err != nil{
-		log.Fatal(err)
+		log.Fatal(err.Error())
 	}
 
 	//load template with movie results
-	err = templates.ExecuteTemplate(w, "movies.html", &results)
+	err = templates.ExecuteTemplate(w, "item.html", &item)
 
 	if err != nil{
 		log.Fatal(err)
 	}
 }
+
