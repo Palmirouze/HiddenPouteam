@@ -5,7 +5,7 @@
 <body>
 <ul>
 {{ range $index, $item := . }}
-    <li><a href="/item/{{$item.Id.Hex}}">{{$item.Name}} - {{$item.Price}}$</a></li>
+    <li>{{template "item" $item}}</li>
 {{ end }}
 </ul>
 </body>
