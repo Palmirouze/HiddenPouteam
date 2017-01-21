@@ -44,3 +44,10 @@ func itemHandler(w http.ResponseWriter, r *http.Request){
 	}
 }
 
+func aboutHandler(w http.ResponseWriter, r *http.Request){
+	err := templates.ExecuteTemplate(w, "about.html", nil)
+
+	if err != nil{
+		log.Fatal(err)
+	}
+}
