@@ -2,8 +2,8 @@
 
   "Database": {
 
-    "Url": "codejamdb:123456@ds157987.mlab.com:57987/codejam"
-
+    "Url": "pouteam:conu@ds117899.mlab.com:17899/conuhacks-pouteam",
+    "Name": "conuhacks-pouteam"
   }
 
 }

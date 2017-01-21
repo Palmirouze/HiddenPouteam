@@ -71,7 +71,7 @@ func startHttpServer(){
 
 	//api
 
-	http.HandleFunc("/api/users/", userHandler)
+	http.HandleFunc("/api/search", searchApiHandler)
 
 	http.HandleFunc("/api/", apiHandler)
 

@@ -23,7 +23,7 @@ type Configuration struct{
 type DatabaseConfig struct{
 
 	Url string
-
+	Name string
 }
 
 //gets the config from json file
