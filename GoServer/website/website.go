@@ -27,7 +27,7 @@ var configuration *config.Configuration
 
 
 
-var templates = template.Must(template.ParseFiles("templates/base.html", "templates/movies.html", "templates/home.html"))
+var templates = template.Must(template.ParseFiles("templates/base.html", "templates/movies.html", "templates/home.html", "templates/test1.html"))
 
 
 
@@ -80,6 +80,7 @@ func startHttpServer(){
 	//main
 
 	http.HandleFunc("/movies/", moviesHandler)
+	http.HandleFunc("/test1.html/", testHandler)
 
 	http.HandleFunc("/", indexHandler)
 
