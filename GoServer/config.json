@@ -3,7 +3,12 @@
   "Database": {
 
     "Url": "pouteam:conu@ds117899.mlab.com:17899/conuhacks-pouteam",
-    "Name": "conuhacks-pouteam"
+    "Name": "conuhacks-pouteam",
+
+    "Tables":
+    {
+      "Items":"Items"
+    }
   }
 
 }

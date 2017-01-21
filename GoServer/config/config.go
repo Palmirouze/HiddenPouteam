@@ -5,7 +5,6 @@ package config
 import (
 
 	"os"
-
 	"encoding/json"
 
 )
@@ -24,7 +23,15 @@ type DatabaseConfig struct{
 
 	Url string
 	Name string
+	Tables DatabaseTables
 }
+
+type DatabaseTables struct{
+	Items string
+}
+
+var MainConfig = GetConfig("config.json")
+
 
 //gets the config from json file
 
