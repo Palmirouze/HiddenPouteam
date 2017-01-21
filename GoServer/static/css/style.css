@@ -4,13 +4,14 @@ body{
 
 .flexContainerHeader {
     display: flex;
-    height: 70px;
+    height: 80px;
     width: 100%;
     background: lightgrey;
 }
 
 #searchbox {
-    margin-top:15px;
+    width: 80%;
+    margin-top:20px;
     display:flex;
 }
 
@@ -21,6 +22,7 @@ body{
     font: 16px Arial, Helvetica;
     border: 1px solid dimgrey;
     padding: 5px 10px;
+    margin-right: 6px;
 }
 
 /* ----------------------- */
@@ -42,8 +44,9 @@ body{
 }
 
 #logo {
-    height: 80px;
-    width: 80px;
+    height: 70px;
+    width: 70px;
+    margin: 5px 5px;
 }
 
 
