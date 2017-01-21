@@ -51,3 +51,31 @@ func aboutHandler(w http.ResponseWriter, r *http.Request){
 		log.Fatal(err)
 	}
 }
+
+func searchResultHandler(w http.ResponseWriter, r *http.Request){
+	var searchTerm string
+
+	params := r.URL.Query()
+
+	if val, ok := params["q"]; ok{
+		searchTerm = val[0]
+	}else{
+		searchTerm = ""
+	}
+
+	items, err := db.GetItemNameContains(searchTerm)
+
+
+	if err != nil{
+		log.Fatal(err)
+	}
+
+	err = templates.ExecuteTemplate(w, "searchResult.html", items)
+
+
+
+	if err != nil{
+		log.Fatal(err)
+	}
+}
+
