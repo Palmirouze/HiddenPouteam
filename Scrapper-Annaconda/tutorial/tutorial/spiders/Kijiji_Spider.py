@@ -6,7 +6,6 @@ class Kijiji_Spider(scrapy.Spider):
     name = "kijiji"
 
     def start_requests(self):
-
         apple = ['iPhone SE', 'iPhone 7', 'iPhone 7 Plus', 'iPhone 5S', 'iPhone 6S', 'iPhone 6S Plus']
         samsung = ['Galaxy S6', 'Galaxy S5', 'Galaxy S7', 'Galaxy J3', 'Galaxy S7 Edge']
         lg = ['G3', 'G4', 'G5', 'K4']
@@ -68,7 +67,7 @@ class Kijiji_Spider(scrapy.Spider):
         if(pagenum is None):
             self.log('ERROR FINDING NEXT PAGE', logging.ERROR)
             return
-        if int(pagenum) < 50:
+        if int(pagenum) < 100:
             # follow pagination links
             next_page_en = response.xpath("//a[@title='Next']/@href").extract_first()
             next_page_fr = response.xpath("//a[@title='Suivante']/@href").extract_first()
