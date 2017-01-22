@@ -19,7 +19,7 @@ class Kijiji_Spider(scrapy.Spider):
             'Lg' : lg,
             'Motorola' : motorola,
             'Google' : google,
-            'Htc' : htc,
+            'Htc' : htc ,
             'Huawei' : huawei
         }
 
