@@ -65,5 +65,10 @@ text-align: center;
     color: grey;
 }
 
+#meanvalue {
+    font: bold 16px Arial;
+    padding-right: 25px;
+}
+
 
 
