@@ -6,7 +6,6 @@ import (
 	"../config"
 	"errors"
 	"strings"
-	"fmt"
 )
 
 func (db *Database) GetItemById(id bson.ObjectId) (*Item, error){
