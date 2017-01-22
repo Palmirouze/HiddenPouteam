@@ -70,9 +70,6 @@ a{
   text-decoration: none;
   transition:0.2s;
 }
-.listing a:hover{
-  text-decoration: underline;
-}
 
 .listing a.black{
   padding:5px;
