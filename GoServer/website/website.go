@@ -7,7 +7,7 @@ import (
 "../database"
 	"../products"
 "html/template"
-"github.com/qiniu/log"
+	"log"
 )
 
 

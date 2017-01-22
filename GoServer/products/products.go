@@ -9,8 +9,7 @@ import (
 	"sort"
 )
 
-//config entries
-
+//List of phone products we display TODO make it a map instead of hardcoding
 type ProductList struct{
 	Apple []string
 	Samsung []string
@@ -20,7 +19,7 @@ type ProductList struct{
 	Htc []string
 	Huawai []string
 }
-
+//Product structure with thats
 type Product struct{
 	FullName string
 	Brand string
@@ -33,15 +32,10 @@ type Product struct{
 
 }
 
-func(p *Product) PriceStr(price float64) (string){
-	return fmt.Sprintf("$%.2f", price)
-}
-
-func(p *Product) PriceStrFInt(price int) (string){
-	return fmt.Sprintf("$%.2f", float64(price)/100.0)
-}
+//type for multipel products
 type Products []Product
 
+// Functions to sort Products
 func (slice Products) Len() int{
 	return len(slice)
 }
@@ -51,7 +45,7 @@ func (slice Products) Less(i,j int) bool{
 func (slice Products) Swap(i,j int){
 	slice[i], slice[j] = slice[j], slice[i]
 }
-
+//Brand struc to store brand info and stats
 type Brand struct {
 	Name string
 	Num int
@@ -61,8 +55,9 @@ type Brand struct {
 
 	AveragePriceStr string
 }
-
+//list f products with stats
 var ProductStatList Products
+//list of brands
 var BrandList []Brand
 
 
@@ -116,7 +111,7 @@ func SetupProducts(db *database.Database){
 	fmt.Println(products)
 
 }
-
+//Get the product list from a brand and array of models
 func createItemStats(db *database.Database, brand string, models []string) []Product{
 	var pList []Product
 	
@@ -178,6 +173,7 @@ func createItemStats(db *database.Database, brand string, models []string) []Pro
 	return pList
 }
 
+
 func ConvertToRealPrice(price float64) float64{
-	return price/100.0
+	return price
 }
