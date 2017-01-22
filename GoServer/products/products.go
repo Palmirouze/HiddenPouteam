@@ -14,6 +14,10 @@ type ProductList struct{
 	Apple []string
 	Samsung []string
 	Lg []string
+	Motorola []string
+	Google []string
+	Htc []string
+	Huawai []string
 }
 
 type Product struct{
@@ -71,6 +75,10 @@ func SetupProducts(db *database.Database){
 	ProductStatList = createItemStats(db, "samsung", products.Samsung)
 	ProductStatList = append(ProductStatList, createItemStats(db, "apple", products.Apple)...)
 	ProductStatList = append(ProductStatList, createItemStats(db, "lg", products.Lg)...)
+	ProductStatList = append(ProductStatList, createItemStats(db, "motorola", products.Motorola)...)
+	ProductStatList = append(ProductStatList, createItemStats(db, "google", products.Google)...)
+	ProductStatList = append(ProductStatList, createItemStats(db, "htc", products.Htc)...)
+	ProductStatList = append(ProductStatList, createItemStats(db, "huawai", products.Huawai)...)
 	fmt.Println(ProductStatList)
 	
 	if err != nil{
@@ -130,7 +138,9 @@ func createItemStats(db *database.Database, brand string, models []string) []Pro
 		}
 		pList = append(pList, Product{brand+" "+model, brand, model, itemNum,ConvertToRealPrice(averagePrice), ConvertToRealPrice(lowestPrice), ConvertToRealPrice(highestPrice)})
 	}
-	brandAverage /= brandNum
+	if(brandNum > 0) {
+		brandAverage /= brandNum
+	}
 	
 	BrandList = append(BrandList, Brand{brand, brandNum, ConvertToRealPrice(brandAverage), ConvertToRealPrice(brandLowest), ConvertToRealPrice(brandHighest)})
 	
