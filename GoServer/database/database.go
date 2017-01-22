@@ -12,13 +12,13 @@ import (
 )
 
 //hold database information
-
 type Database struct{
 
 	Session *mgo.Session
 
 }
 
+//Item struct that matches database listing
 type Item struct{
 	Id bson.ObjectId `json:"id" bson:"_id,omitempty"`
 	Title string

@@ -4,7 +4,7 @@ import (
 "net/http"
 "fmt"
 "encoding/json"
-"github.com/qiniu/log"
+	"log"
 	"gopkg.in/mgo.v2/bson"
 	"../products"
 )
