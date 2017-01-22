@@ -10,7 +10,7 @@ import (
 
 //handles the api landing page
 func apiHandler(w http.ResponseWriter, r *http.Request){
-	fmt.Fprint(w, "THIS IS THE API")
+	fmt.Fprint(w, "api")
 }
 
 //Displays a list of users in json format
