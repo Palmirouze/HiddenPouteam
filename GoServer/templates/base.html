@@ -28,5 +28,11 @@
 
 
 {{define "item"}}
-<div><a href="/item/{{.Id.Hex}}">{{.Name}} - {{.Price}}$</a></div>
+<div class="listing"><a href="/item/{{.Id.Hex}}"><b>{{.Name}}</b></a>
+    <br /> <b>Average Price:</b> {{.Price}}$ (Last 30 days)
+    <br /> <b> Highest:</b> $### ,  <b>Lowest:</b> $####
+    <br /> <b>Number of Listings</b>: #####
+    <br /> <b> </b>
+
+</div>
 {{end}}
