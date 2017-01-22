@@ -25,6 +25,7 @@ type Item struct{
 	Price int
 	Brand string
 	Brandmodel string
+	Source string
 }
 
 //connects to database and return Database
