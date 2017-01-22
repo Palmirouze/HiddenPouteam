@@ -29,6 +29,8 @@ type Product struct{
 	AveragePrice float64
 	LowestPrice float64
 	HighestPrice float64
+	AveragePriceStr string
+
 }
 
 func(p *Product) PriceStr(price float64) (string){
@@ -56,6 +58,8 @@ type Brand struct {
 	AveragePrice float64
 	LowestPrice float64
 	HighestPrice float64
+
+	AveragePriceStr string
 }
 
 var ProductStatList Products
@@ -160,13 +164,13 @@ func createItemStats(db *database.Database, brand string, models []string) []Pro
 		
 		if(itemNum > 0) {
 			averagePrice /= float64(len(items))
-			pList = append(pList, Product{brand+" "+model, brand, model, itemNum,ConvertToRealPrice(averagePrice), ConvertToRealPrice(lowestPrice), ConvertToRealPrice(highestPrice)})
+			pList = append(pList, Product{brand+" "+model, brand, model, itemNum,ConvertToRealPrice(averagePrice), ConvertToRealPrice(lowestPrice), ConvertToRealPrice(highestPrice), fmt.Sprintf("%.2f",(ConvertToRealPrice(averagePrice )))})
 		}
 		
 	}
 	if(brandNum > 0) {
 		brandAverage /= float64(brandNum)
-		BrandList = append(BrandList, Brand{brand, brandNum, ConvertToRealPrice(brandAverage), ConvertToRealPrice(brandLowest), ConvertToRealPrice(brandHighest)})
+		BrandList = append(BrandList, Brand{brand, brandNum, ConvertToRealPrice(brandAverage), ConvertToRealPrice(brandLowest), ConvertToRealPrice(brandHighest), fmt.Sprintf("%.2f",(ConvertToRealPrice(brandAverage )))})
 	}
 	
 	
