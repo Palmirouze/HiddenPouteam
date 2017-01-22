@@ -1,1 +1,1 @@
-#Access our website at ##MeanValue.net
+#Access our website at MeanValue.net
