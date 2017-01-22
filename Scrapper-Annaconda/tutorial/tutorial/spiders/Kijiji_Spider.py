@@ -64,7 +64,6 @@ class Kijiji_Spider(scrapy.Spider):
                     'brandmodel': brand + ' ' + model,
             }
         pagenum = response.xpath("//span[@class='selected']/text()").extract_first()
-        self.log('PAGE: ' + pagenum)
 
         if(pagenum is None):
             self.log('ERROR FINDING NEXT PAGE', logging.ERROR)
