@@ -6,7 +6,7 @@ body{
 
 .flexContainerHeader {
     display: flex;
-    height: 90px;
+    height: 35px;
     width: 100%;
     background: white;
 }
@@ -16,7 +16,7 @@ body{
     margin-top:20px;
     display:flex;
     width:80%;
-    padding-left: 2%;
+    padding-left: 5%;
 }
 
 
@@ -60,15 +60,13 @@ body{
 }
 
 #welcomeMessage {
-text-align: center;
     font: bold 40px Helvetica;
     color: grey;
+    text-align: center;
+    margin-top: 17%;
 }
 
-#meanvalue {
-    font: bold 16px Arial;
-    padding-right: 25px;
-}
+
 
 
 
