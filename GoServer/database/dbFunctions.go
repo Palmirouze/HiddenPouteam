@@ -35,7 +35,6 @@ func (db *Database) GetItemNameContains( term string) ([]Item, error){
 	for _, t := range allTerms{
 		regex+="(?=.*"+t+")"
 	}
-	fmt.Println(regex)
 	var items []Item
 
 	err := c.Find(bson.M{"title":bson.M{"$regex":bson.RegEx{regex, "i"}}}).All(&items)
