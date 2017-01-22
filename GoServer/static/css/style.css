@@ -2,7 +2,8 @@ body{
     background-color:white;
     margin: 0;
     padding: 0;
-    background-image: url("https://www.lecarredesmedias.fr/img-news/8788.jpg");
+    background-image: url("http://brandthunder.com/wp/wp-content/uploads/2015/08/minions-movie-2015-team-photo-hd-wallpaper-t2.jpg");
+    background-size: cover;
 }
 
 .flexContainerHeader {
@@ -94,8 +95,10 @@ ul {
     color: grey;
     text-align: center;
     margin-top: 13%;
-    color: white;
+    color: deeppink;
 }
+
+
 
 
 
