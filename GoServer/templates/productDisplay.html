@@ -3,6 +3,8 @@
 <body>
 {{template "header" .}}
 {{$product := .Product}}
+
+<div id="result">
 {{template "product" $product}}
 <br>
 <br>
@@ -13,4 +15,6 @@
   <li>{{template "item" $item}}</li>
   {{ end }}
 </ul>
+
+</div>
 </body>
