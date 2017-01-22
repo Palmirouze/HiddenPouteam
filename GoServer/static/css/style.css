@@ -35,16 +35,34 @@ body{
 
 
 .listing {
-    height: 100px;
-    border: 1px solid black;
+    
+    border-bottom:1px solid black;
     border-radius: 3px;
     width: 80%;
     margin: auto;
-    flex-basis: auto;
+    padding-bottom:20px;
+    padding-top:20px;
 }
 
 .result {
-    margin-top: 100px;
+ 
+}
+
+.listing h2{
+    padding: 0px;
+    margin:0px;
+}
+.listing a{
+    padding:5px;
+    transition:0.2s;
+}
+.listing a:hover{
+    background-color:black;
+    color:white;
+}
+
+.listing .info{
+    margin-top:5px;
 }
 
 .listing .high{
@@ -59,7 +77,8 @@ body{
 ul {
     list-style-type: none;
 }
-
+a { color: inherit; }
+a:visited{color:inherit;}
 #priceDisplay {
 
 }
