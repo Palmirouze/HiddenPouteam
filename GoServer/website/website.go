@@ -80,7 +80,7 @@ func startHttpServer(){
 
 	//listen on port 8080
 
-	err := http.ListenAndServe(":8080", nil)
+	err := http.ListenAndServe(":80", nil)
 
 
 
