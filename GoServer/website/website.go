@@ -23,7 +23,7 @@ var db *database.Database
 var templates = template.Must(template.ParseFiles("templates/base.html",
 	"templates/item.html", "templates/home.html", "templates/test1.html" ,
 	"templates/item.html", "templates/about.html", "templates/searchResult.html",
-	"templates/productSearchResult.html", "templates/productDisplay.html"))
+	"templates/productSearchResult.html", "templates/productDisplay.html", "templates/brandStats.html"))
 
 
 
@@ -67,6 +67,7 @@ func startHttpServer(){
 
 	http.HandleFunc("/api/search", searchApiHandler)
 	http.HandleFunc("/api/item/", itemApiHandler)
+	http.HandleFunc("/api/stats/brands/", brandStatApiHandler)
 	http.HandleFunc("/api/", apiHandler)
 
 
@@ -78,6 +79,7 @@ func startHttpServer(){
 	http.HandleFunc("/searchResult", searchResultHandler)
 	http.HandleFunc("/productSearchResult", productResultHandler)
 	http.HandleFunc("/view/", viewProduct)
+	http.HandleFunc("/stats/", brandStatHandler)
 	http.HandleFunc("/", indexHandler)
 
 

@@ -115,3 +115,10 @@ func searchResultHandler(w http.ResponseWriter, r *http.Request){
 	}
 }
 
+func brandStatHandler(w http.ResponseWriter, r *http.Request){
+	err := templates.ExecuteTemplate(w, "brandStats.html", products.BrandList)
+
+	if err != nil{
+		log.Fatal(err)
+	}
+}

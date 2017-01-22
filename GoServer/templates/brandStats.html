@@ -1,0 +1,26 @@
+{{template "head" .}}
+
+<body>
+
+<script src="https://d3js.org/d3.v4.min.js"></script>
+
+{{template "header" .}}
+<div id="result">
+  {{ range $index, $brand := . }}
+  <h1>{{$brand.Name}}</h1>
+  <br>
+  Listings: {{$brand.Num}}
+  <br>
+  Prices:
+  <br>
+  Average: {{$brand.AveragePrice}}
+  Highest: {{$brand.HighestPrice}}
+  Lowest: {{$brand.LowestPrice}}
+  
+  {{ end }}
+</div>
+
+<script src="/stats/stats.js"></script>
+</body>
+
+

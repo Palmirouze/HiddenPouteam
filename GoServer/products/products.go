@@ -26,7 +26,17 @@ type Product struct{
 	HighestPrice float64
 }
 
+type Brand struct {
+	Name string
+	Num int
+	AveragePrice float64
+	LowestPrice float64
+	HighestPrice float64
+}
+
 var ProductStatList []Product
+var BrandList []Brand
+
 
 //gets the config from json file
 func SearchProducts(term string) []Product{
@@ -73,6 +83,11 @@ func SetupProducts(db *database.Database){
 func createItemStats(db *database.Database, brand string, models []string) []Product{
 	var pList []Product
 	
+	var brandNum int = 0;
+	var brandAverage int = -1
+	var brandLowest int = -1
+	var brandHighest int = -1
+	
 	for _, model := range models{
 		
 		items, _ := db.GetItemBrandModel(brand, model)
@@ -91,12 +106,37 @@ func createItemStats(db *database.Database, brand string, models []string) []Pro
 				lowestPrice = item.Price
 			}
 		}
+		
+		if(lowestPrice > 0){
+			if(lowestPrice < brandLowest){
+				brandLowest = lowestPrice
+			}	
+		}
+		
+		if(highestPrice > 0){
+			if(highestPrice > brandHighest){
+				brandHighest = highestPrice
+			}
+		}
+		
+		
 		itemNum := len(items)
+		
+		brandNum += itemNum
+		brandAverage += averagePrice
+		
 		if(itemNum > 0) {
 			averagePrice /= len(items)
 		}
-		pList = append(pList, Product{brand+" "+model, brand, model, itemNum,float64(averagePrice)/100.0, float64(lowestPrice)/100.0, float64(highestPrice)/100.0})
+		pList = append(pList, Product{brand+" "+model, brand, model, itemNum,ConvertToRealPrice(averagePrice), ConvertToRealPrice(lowestPrice), ConvertToRealPrice(highestPrice)})
 	}
+	brandAverage /= brandNum
+	
+	BrandList = append(BrandList, Brand{brand, brandNum, ConvertToRealPrice(brandAverage), ConvertToRealPrice(brandLowest), ConvertToRealPrice(brandHighest)})
 	
 	return pList
+}
+
+func ConvertToRealPrice(price int) float64{
+	return float64(price)/100.0
 }

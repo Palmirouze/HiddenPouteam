@@ -6,6 +6,7 @@ import (
 "encoding/json"
 "github.com/qiniu/log"
 	"gopkg.in/mgo.v2/bson"
+	"../products"
 )
 
 //handles the api landing page
@@ -49,6 +50,19 @@ func itemApiHandler(w http.ResponseWriter, r *http.Request){
 	}
 	jsonText, err := json.Marshal(item)
 
+	fmt.Fprint(w, string(jsonText))
+
+}
+
+func brandStatApiHandler(w http.ResponseWriter, r *http.Request){
+
+
+	jsonText, err := json.Marshal(products.BrandList)
+	
+	if err != nil{
+		log.Fatal(err.Error())
+	}
+	
 	fmt.Fprint(w, string(jsonText))
 
 }
