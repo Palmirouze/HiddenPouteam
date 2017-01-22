@@ -18,7 +18,7 @@ var db *database.Database
 
 
 
-
+//compile templates
 var templates = template.Must(template.ParseFiles("templates/base.html",
 	"templates/item.html", "templates/home.html",
 	"templates/item.html", "templates/about.html", "templates/searchResult.html",
@@ -27,10 +27,7 @@ var templates = template.Must(template.ParseFiles("templates/base.html",
 
 
 //main function
-
 func StartWebsite(){
-
-
 
 
 	//connect to database defined in config
@@ -70,8 +67,7 @@ func startHttpServer(){
 
 
 
-	//main
-
+	//main website
 	http.HandleFunc("/item/", itemHandler)
 	http.HandleFunc("/about/", aboutHandler)
 	http.HandleFunc("/searchResult", searchResultHandler)

@@ -11,20 +11,26 @@
 
 <div id="result" class='with-3d-shadow with-transitions'>
   <h1>Number of listings per brand:</h1>
+  <div class="statBox">
   <svg id="shareGraph" class="pieChart"></svg>
   
   {{ range $index, $brand := . }}
-  <h1>{{$brand.Name}}</h1>
-  <br>
-  Listings: {{$brand.Num}}
-  <br>
-  Prices:
-  <br>
-  Average: {{$brand.AveragePrice}}
-  Highest: {{$brand.HighestPrice}}
-  Lowest: {{$brand.LowestPrice}}
-  
+  <div class="statItem">
+    <h1>{{$brand.Name}}</h1>
+    <div class="statInfo">
+    <br>
+    Listings: {{$brand.Num}}
+    <br>
+    Prices:
+    <br>
+    Average: {{$brand.AveragePrice}}
+    Highest: {{$brand.HighestPrice}}
+    Lowest: {{$brand.LowestPrice}}
+    </div>
+
+  </div>
   {{ end }}
+</div>
 </div>
 
 <script src="/static//js/stats.js"></script>

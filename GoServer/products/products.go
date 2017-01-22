@@ -159,13 +159,13 @@ func createItemStats(db *database.Database, brand string, models []string) []Pro
 		
 		if(itemNum > 0) {
 			averagePrice /= float64(len(items))
-			pList = append(pList, Product{brand+" "+model, brand, model, itemNum,ConvertToRealPrice(averagePrice), ConvertToRealPrice(lowestPrice), ConvertToRealPrice(highestPrice), fmt.Sprintf("%.2f",(ConvertToRealPrice(averagePrice )))})
+			pList = append(pList, Product{brand+" "+model, brand, model, itemNum,(averagePrice), (lowestPrice), (highestPrice), fmt.Sprintf("%.2f",((averagePrice )))})
 		}
 		
 	}
 	if(brandNum > 0) {
 		brandAverage /= float64(brandNum)
-		BrandList = append(BrandList, Brand{brand, brandNum, ConvertToRealPrice(brandAverage), ConvertToRealPrice(brandLowest), ConvertToRealPrice(brandHighest), fmt.Sprintf("%.2f",(ConvertToRealPrice(brandAverage )))})
+		BrandList = append(BrandList, Brand{brand, brandNum, (brandAverage), (brandLowest), (brandHighest), fmt.Sprintf("%.2f",((brandAverage )))})
 	}
 	
 	
@@ -173,7 +173,3 @@ func createItemStats(db *database.Database, brand string, models []string) []Pro
 	return pList
 }
 
-
-func ConvertToRealPrice(price float64) float64{
-	return price
-}

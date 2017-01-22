@@ -1,4 +1,18 @@
+.statBox{
+  display:flex;
+}
+
 .pieChart{
   width:400px !important;
   height:400px !important;
+ }
+
+.statItem{
+  border:1px solid black;
+  margin:5px;
+  padding:10px;
+
+}
+.statInfo{
+  margin-left:20px;
 }
