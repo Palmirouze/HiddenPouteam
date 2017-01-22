@@ -84,7 +84,7 @@ class KijijiPipeline(object):
             if mod in title:
                 raise DropItem("Better than we expected")
 
-        if price < 500:
+        if price < 5000:
             raise DropItem("Price too low")
         elif int(price) <= 0 or title is None or url is None:
             raise DropItem("Missing Data")
@@ -100,6 +100,7 @@ class KijijiPipeline(object):
             month_num = months[month]
             # logging.log(logging.ERROR, str(dateArray[2]) + " YEAR: " + str(dateArray[0]) + " MONTH: " + str(month_num))
             date_posted = datetime.datetime(int(dateArray[2]), int(month_num), int(dateArray[0]))
+        price = int(price)/100
 
         return {
             'price': price,
