@@ -41,7 +41,7 @@
 {{define "item"}}
 <div class="listing"><a href="/item/{{.Id.Hex}}">{{.Title}}</a>
     <br /> <b>Price:</b> {{.Price}}$
-    <div id="priceDisplay"> {{.Price}}$</div>
+    <div> {{.Price}}$</div>
     
 </div>
 
@@ -50,7 +50,7 @@
 
 {{define "product"}}
 <div class="listing"><a href="/view/{{.FullName}}">{{.Model}} from {{.Brand}}</a>
-    <br /> <b>Average Price:</b> {{.AveragePrice}}$ (Last 30 days)
+    <br /> <div id="priceDisplay"><b>avg:</b> {{.AveragePrice}}$</div>
     <br /> <span class="high"><b> Highest:</b> {{.HighestPrice}} </span>,  <span class="low"><b>Lowest:</b> {{.LowestPrice}}</span>
     <br /> <b>Number of Listings</b>: {{.Num}}
 
