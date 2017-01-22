@@ -12,7 +12,7 @@ class Kijiji_Spider(scrapy.Spider):
         motorola = ['Moto Z', 'Moto G']
         google = ['Pixel', 'Pixel XL', 'Nexus 6P', 'Nexus 6']
         htc = ['M9']
-        huawai = ['GR5','Nova Plus', 'Y6']
+        huawei = ['GR5','Nova Plus', 'Y6']
         phones = {
             'Apple' : apple,
             'Samsung' : samsung,
@@ -20,7 +20,7 @@ class Kijiji_Spider(scrapy.Spider):
             'Motorola' : motorola,
             'Google' : google,
             'Htc' : htc,
-            'Huawai' : huawai
+            'Huawei' : huawei
         }
 
         for brand in phones:
