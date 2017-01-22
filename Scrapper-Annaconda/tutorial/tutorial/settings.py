@@ -15,6 +15,14 @@ SPIDER_MODULES = ['tutorial.spiders']
 NEWSPIDER_MODULE = 'tutorial.spiders'
 
 
+# Mongo Settings:
+MONGO_URI = 'mongodb://pouteam:conu>@ds117899.mlab.com:17899/conuhacks-pouteam'
+MONGO_DATABASE = 'conuhacks-pouteam'
+MONGO_ROOT = 'ds117899.mlab.com'
+MONGO_ACCOUNT = 17899
+MONGO_USER = 'pouteam'
+MONGO_PASS = 'conu'
+
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'tutorial (+http://www.yourdomain.com)'
 
@@ -64,9 +72,10 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'tutorial.pipelines.SomePipeline': 300,
-#}
+ITEM_PIPELINES = {
+    'tutorial.pipelines.KijijiPipeline': 300,
+    'tutorial.pipelines.MongoPipeline': 800,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html

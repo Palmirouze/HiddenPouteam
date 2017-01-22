@@ -1,19 +1,26 @@
 
 {{define "header"}}
 <head>
+    <title>MeanValue</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="/static/js/script.js"></script>
 <link rel="stylesheet" href="/static/css/style.css" type="text/css"/>
 <div class="flexContainerHeader">
+
     <div>
         <img src="/static/img/logo.png" id="logo">
     </div>
-
         <form id="searchbox" action="">
 
-            <input id="search" type="text" placeholder="Search..">
+            <input id="search" type="text" placeholder="Search MeanValue for phones..">
             <input id="submit" type="submit" value="Go">
 
         </form>
+
+
+
 </div>
+
 
 </head>
 
@@ -22,4 +29,11 @@
 
 {{define "item"}}
 <div><a href="/item/{{.Id.Hex}}">{{.Title}} - {{.Price}}$</a></div>
+<div class="listing"><a href="/item/{{.Id.Hex}}"><b>{{.Name}}</b></a>
+    <br /> <b>Average Price:</b> {{.Price}}$ (Last 30 days)
+    <br /> <b> Highest:</b> $### ,  <b>Lowest:</b> $####
+    <br /> <b>Number of Listings</b>: #####
+    <br /> <b> </b>
+
+</div>
 {{end}}
