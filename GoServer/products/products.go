@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"../database"
 	"strings"
+	"sort"
 )
 
 //config entries
@@ -30,6 +31,18 @@ type Product struct{
 	HighestPrice float64
 }
 
+type Products []Product
+
+func (slice Products) Len() int{
+	return len(slice)
+}
+func (slice Products) Less(i,j int) bool{
+	return slice[i].Num > slice[j].Num
+}
+func (slice Products) Swap(i,j int){
+	slice[i], slice[j] = slice[j], slice[i]
+}
+
 type Brand struct {
 	Name string
 	Num int
@@ -38,8 +51,10 @@ type Brand struct {
 	HighestPrice float64
 }
 
-var ProductStatList []Product
+var ProductStatList Products
 var BrandList []Brand
+
+
 
 
 //gets the config from json file
@@ -79,6 +94,9 @@ func SetupProducts(db *database.Database){
 	ProductStatList = append(ProductStatList, createItemStats(db, "google", products.Google)...)
 	ProductStatList = append(ProductStatList, createItemStats(db, "htc", products.Htc)...)
 	ProductStatList = append(ProductStatList, createItemStats(db, "huawai", products.Huawai)...)
+	
+	sort.Sort(ProductStatList)
+	
 	fmt.Println(ProductStatList)
 	
 	if err != nil{
