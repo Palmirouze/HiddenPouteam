@@ -4,6 +4,10 @@ body{
     padding: 0;
 }
 
+a{
+    text-decoration: none;
+}
+
 .flexContainerHeader {
     display: flex;
     justify-content: space-around;
@@ -37,7 +41,6 @@ body{
 .listing {
     
     border-bottom:1px solid black;
-    border-radius: 3px;
     width: 80%;
     margin: auto;
     padding-bottom:20px;
@@ -46,6 +49,11 @@ body{
 
 .result {
  
+}
+
+
+.listing:hover{
+    background-color: #e7e7e7;
 }
 
 .listing h2{
