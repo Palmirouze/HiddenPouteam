@@ -156,6 +156,11 @@ a:visited{color:inherit;}
     color: black;
 }
 
+#welcomeMessage a{
+    text-decoration: underline;
+
+}
+
 .meanValueImg {
     height: 45px;
     width: 250px;
