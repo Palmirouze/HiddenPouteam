@@ -18,13 +18,6 @@ func indexHandler(w http.ResponseWriter, r *http.Request){
 	}
 }
 
-func testHandler(w http.ResponseWriter, r *http.Request){
-	err := templates.ExecuteTemplate(w, "test1.html", nil)
-
-	if err != nil{
-		log.Fatal(err)
-	}
-}
 
 //displays a list of movie titles using tempalates
 func itemHandler(w http.ResponseWriter, r *http.Request){
