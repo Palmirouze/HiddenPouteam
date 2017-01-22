@@ -10,10 +10,18 @@ class Kijiji_Spider(scrapy.Spider):
         apple = ['iPhone SE', 'iPhone 7', 'iPhone 7 Plus', 'iPhone 5S', 'iPhone 6S', 'iPhone 6S Plus']
         samsung = ['Galaxy S6', 'Galaxy S5', 'Galaxy S7', 'Galaxy J3', 'Galaxy S7 Edge']
         lg = ['G3', 'G4', 'G5', 'K4']
+        motorola = ['Moto Z', 'Moto G']
+        google = ['Pixel', 'Pixel XL', 'Nexus 6P', 'Nexus 6']
+        htc = ['M9']
+        huawai = ['GR5','Nova Plus', 'Y6']
         phones = {
             'Apple' : apple,
             'Samsung' : samsung,
             'Lg' : lg,
+            'Motorola' : motorola,
+            'Google' : google,
+            'Htc' : htc,
+            'Huawai' : huawai
         }
 
         for brand in phones:

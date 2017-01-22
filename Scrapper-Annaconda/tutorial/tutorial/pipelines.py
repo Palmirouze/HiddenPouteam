@@ -17,7 +17,7 @@ class TutorialPipeline(object):
         return item
 
 class MongoPipeline(object):
-    collection_name = 'kijiji_newitems'
+    collection_name = 'kijiji_newlayout'
 
     def __init__(self, mongo_uri, mongo_db, mongo_root, mongo_account, mongo_user, mongo_pass):
         self.mongo_uri = mongo_uri
@@ -57,7 +57,7 @@ class KijijiPipeline(object):
 
     def process_item(self, item, spider):
 
-        modifiers = ['Edge', 'Plus']
+        modifiers = ['Edge', 'Plus', 'XL']
 
         price_string = item['price']
         regex = r"(([0-9]+,*)+)"
