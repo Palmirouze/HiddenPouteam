@@ -73,7 +73,8 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'tutorial.pipelines.KijijiPipeline': 300,
+    'tutorial.pipelines.KijijiPipeline': 200,
+    'tutorial.pipelines.SizeMetaPipeline' : 300,
     'tutorial.pipelines.MongoPipeline': 800,
 }
 

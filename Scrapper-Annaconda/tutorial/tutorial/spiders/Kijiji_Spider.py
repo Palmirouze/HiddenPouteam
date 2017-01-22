@@ -1,5 +1,5 @@
 import scrapy
-import re
+import logging
 
 
 class Kijiji_Spider(scrapy.Spider):
@@ -11,9 +11,9 @@ class Kijiji_Spider(scrapy.Spider):
         samsung = ['Galaxy S6', 'Galaxy S5', 'Galaxy S7', 'Galaxy J3', 'Galaxy S7 Edge']
         lg = ['G3', 'G4', 'G5', 'K4']
         phones = {
-            'apple' : apple,
-            'samsung' : samsung,
-            'lg' : lg,
+            'Apple' : apple,
+            'Samsung' : samsung,
+            'Lg' : lg,
         }
 
         for brand in phones:
@@ -21,11 +21,17 @@ class Kijiji_Spider(scrapy.Spider):
                 safe_brand = brand.replace(' ','-')
                 safe_model = model.replace(' ','-')
                 url = 'http://www.kijiji.ca/b-cellulaire/grand-montreal/' + safe_brand + '-' + safe_model + '/k0c760l80002?ad=offering'
-                yield scrapy.Request(url=url, callback=self.parse, )
+                request =  scrapy.Request(url=url, callback=self.parse, meta={'brand':brand,'model':model})
+                yield request
 
 
 
     def parse(self, response):
+        brand = response.meta.get('brand')
+        model = response.meta.get('model')
+        if brand is None or model is None:
+            self.log(response, logging.ERROR)
+            return
         objects = response.xpath("//div[@class='info-container']")
         for obj in objects:
             price = obj.xpath(".//div[@class='price']/text()").extract_first()
@@ -44,16 +50,18 @@ class Kijiji_Spider(scrapy.Spider):
                     'location_coarse': location_coarse,
                     'date_posted': date_posted,
                     'description': description,
-                    'details': details
+                    'details': details,
+                    'brand': brand,
+                    'model': model,
+                    'brandmodel': brand + ' ' + model,
             }
         pagenum = response.xpath("//span[@class='selected']/text()").extract_first()
         self.log('PAGE: ' + pagenum)
 
         if(pagenum is None):
-            self.log('ERROR FINDING NEXT PAGE')
+            self.log('ERROR FINDING NEXT PAGE', logging.ERROR)
             return
-        self.log('Finished page: ' + pagenum)
-        if int(pagenum) < 2:
+        if int(pagenum) < 50:
             # follow pagination links
             next_page_en = response.xpath("//a[@title='Next']/@href").extract_first()
             next_page_fr = response.xpath("//a[@title='Suivante']/@href").extract_first()
@@ -63,6 +71,6 @@ class Kijiji_Spider(scrapy.Spider):
                 next_page = next_page_fr
             if next_page is not None:
                 next_page = response.urljoin(next_page)
-                yield scrapy.Request(next_page, callback=self.parse)
+                yield scrapy.Request(next_page, callback=self.parse, meta={'brand':brand,'model':model})
             else:
-                self.log('WHUUTT')
+                self.log('Last Page was: ' + pagenum, logging.DEBUG)
