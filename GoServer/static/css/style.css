@@ -40,6 +40,11 @@ body{
     margin-bottom: 0.25em;
 }
 
+.result {
+    margin-top: 100px;
+
+}
+
 .listing .high{
     color: red;
 
