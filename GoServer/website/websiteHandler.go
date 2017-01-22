@@ -4,6 +4,7 @@ import (
 	"net/http"
 	"gopkg.in/mgo.v2/bson"
 	"github.com/qiniu/log"
+	"../products"
 )
 
 
@@ -49,6 +50,24 @@ func aboutHandler(w http.ResponseWriter, r *http.Request){
 		log.Fatal(err)
 	}
 }
+func productResultHandler(w http.ResponseWriter, r *http.Request) {
+	var searchTerm string
+
+	params := r.URL.Query()
+
+	if val, ok := params["q"]; ok{
+		searchTerm = val[0]
+	}else{
+		searchTerm = ""
+	}
+	products := products.SearchProducts(searchTerm)
+
+	err := templates.ExecuteTemplate(w, "productSearchResult.html", products)
+	
+	if err != nil{
+		log.Fatal(err)
+	}
+}
 
 func searchResultHandler(w http.ResponseWriter, r *http.Request){
 	var searchTerm string
@@ -60,7 +79,7 @@ func searchResultHandler(w http.ResponseWriter, r *http.Request){
 	}else{
 		searchTerm = ""
 	}
-
+	
 	items, err := db.GetItemNameContains(searchTerm)
 
 

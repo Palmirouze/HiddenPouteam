@@ -23,6 +23,8 @@ type Item struct{
 	Id bson.ObjectId `json:"id" bson:"_id,omitempty"`
 	Title string
 	Price int
+	Brand string
+	Brandmodel string
 }
 
 //connects to database and return Database

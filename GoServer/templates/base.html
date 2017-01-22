@@ -48,3 +48,14 @@
 
 </div>
 {{end}}
+
+{{define "product"}}
+<div class="listing">{{.Model}} from {{.Brand}}
+    <br /> <b>Average Price:</b> {{.AveragePrice}}$ (Last 30 days)
+    <br /> <span class="high"><b> Highest:</b> {{.HighestPrice}} </span>,  <span class="low"><b>Lowest:</b> {{.LowestPrice}}</span>
+    <br /> <b>Number of Listings</b>: {{.Num}}
+
+</div>
+
+</div>
+{{end}}

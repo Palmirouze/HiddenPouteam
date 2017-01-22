@@ -1,0 +1,5 @@
+<ul>
+  {{ range $index, $product := . }}
+  <li>{{template "product" $product}}</li>
+  {{ end }}
+</ul>

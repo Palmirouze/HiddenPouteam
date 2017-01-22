@@ -1,0 +1,8 @@
+{
+  "apple":
+  ["iPhone SE", "iPhone 7", "iPhone 7 Plus", "iPhone 5S", "iPhone 6S", "iPhone 6S Plus"],
+  "samsung":
+  ["Galaxy S6", "Galaxy S5", "Galaxy S7", "Galaxy J3", "Galaxy S7 Edge"],
+  "lg":
+  ["G3", "G4", "G5", "K4"]
+}

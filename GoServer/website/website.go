@@ -2,15 +2,11 @@ package website
 
 
 import (
-
 "fmt"
-
 "net/http"
-
 "../database"
-
+	"../products"
 "html/template"
-
 "github.com/qiniu/log"
 
 )
@@ -26,7 +22,8 @@ var db *database.Database
 
 var templates = template.Must(template.ParseFiles("templates/base.html",
 	"templates/item.html", "templates/home.html", "templates/test1.html" ,
-	"templates/item.html", "templates/about.html", "templates/searchResult.html"))
+	"templates/item.html", "templates/about.html", "templates/searchResult.html",
+	"templates/productSearchResult.html"))
 
 
 
@@ -44,8 +41,8 @@ func StartWebsite(){
 
 	defer db.CloseDatabase()
 
-
-
+	products.SetupProducts(db)
+	
 	startHttpServer()
 
 }
@@ -79,6 +76,7 @@ func startHttpServer(){
 	http.HandleFunc("/item/", itemHandler)
 	http.HandleFunc("/about/", aboutHandler)
 	http.HandleFunc("/searchResult", searchResultHandler)
+	http.HandleFunc("/productSearchResult", productResultHandler)
 	http.HandleFunc("/", indexHandler)
 
 
