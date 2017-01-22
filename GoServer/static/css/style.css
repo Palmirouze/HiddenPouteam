@@ -161,12 +161,13 @@ a:visited{color:inherit;}
 #priceDisplay {
     color: limegreen;
     text-align: right;
-    margin-right: 20px;
-    font: bold 28px Helvetica;
+    margin-right: 15px;
+    font: bold 30px Helvetica;
 }
 
 #nameDisplay {
     font: 28px Helvetica;
+    margin-left: 10px;
 }
 
 #nameDisplay span {
