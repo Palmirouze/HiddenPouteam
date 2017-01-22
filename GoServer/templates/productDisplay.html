@@ -1,0 +1,14 @@
+{{template "head" .}}
+
+<body>
+{{template "header" .}}
+<h1>Showing listings for {{.Name}}</h1>
+{{template "product".Product}}
+<br>
+<br>
+<ul>
+  {{ range $index, $item := .Items }}
+  <li>{{template "item" $item}}</li>
+  {{ end }}
+</ul>
+</body>

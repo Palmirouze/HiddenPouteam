@@ -1,3 +1,6 @@
-{{template "header" .}}
+{{template "head" .}}
 
-<a href="/item/{{.Id.Hex}}">{{.Name}} - {{.Price}}$</a>
+<body>
+{{template "header" .}}
+{{template "item" .}}
+</body>

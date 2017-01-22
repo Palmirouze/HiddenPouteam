@@ -23,20 +23,26 @@ func (db *Database) GetItemById(id bson.ObjectId) (*Item, error){
 	return &item, nil
 }
 
-func (db *Database) GetItemBrandModel(brand string, model string) ([]Item, error){
+func (db *Database) GetItemBrandModelFull(full string) ([]Item, error){
 	c := db.Session.DB(config.MainConfig.Database.Name).C(config.MainConfig.Database.Tables.Items)
-	
+
 	var items []Item
-	
-	err := c.Find(bson.M{"brandmodel":bson.M{"$regex":bson.RegEx{"^"+brand+" "+model+"$", "i"}}}).All(&items)
-	
-	
+
+	err := c.Find(bson.M{"brandmodel":bson.M{"$regex":bson.RegEx{"^"+full+"$", "i"}}}).All(&items)
+
+
 	if err != nil {
 		log.Fatal(err)
 		return nil, errors.New("Could not do query for item anme contains.")
 	}
-	
+
 	return items, nil
+
+}
+
+func (db *Database) GetItemBrandModel(brand string, model string) ([]Item, error){
+	
+	return db.GetItemBrandModelFull(brand+" "+model)
 	
 }
 

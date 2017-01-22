@@ -20,7 +20,7 @@
 <header class="flexContainerHeader">
 
     <div>
-        <img src="/static/img/logo.png" id="logo">
+        <a href="/"><img src="/static/img/logo.png" id="logo"></a>
     </div>
     <form id="searchbox" action="">
 
@@ -40,17 +40,14 @@
 
 {{define "item"}}
 <div class="listing"><a href="/item/{{.Id.Hex}}">{{.Title}}</a>
-    <br /> <b>Average Price:</b> {{.Price}}$ (Last 30 days)
-    <br /> <span class="high"><b> Highest:</b> $### </span>,  <span class="low"><b>Lowest:</b> $####</span>
-    <br /> <b>Number of Listings</b>: #####
-
+    <br /> <b>Price:</b> {{.Price}}$
 </div>
 
 </div>
 {{end}}
 
 {{define "product"}}
-<div class="listing">{{.Model}} from {{.Brand}}
+<div class="listing"><a href="/view/{{.FullName}}">{{.Model}} from {{.Brand}}</a>
     <br /> <b>Average Price:</b> {{.AveragePrice}}$ (Last 30 days)
     <br /> <span class="high"><b> Highest:</b> {{.HighestPrice}} </span>,  <span class="low"><b>Lowest:</b> {{.LowestPrice}}</span>
     <br /> <b>Number of Listings</b>: {{.Num}}

@@ -5,6 +5,7 @@ import (
 	"gopkg.in/mgo.v2/bson"
 	"github.com/qiniu/log"
 	"../products"
+	"../database"
 )
 
 
@@ -39,12 +40,30 @@ func itemHandler(w http.ResponseWriter, r *http.Request){
 	err = templates.ExecuteTemplate(w, "item.html", &item)
 
 	if err != nil{
-		log.Fatal(err)
+		log.Fatal(err) 
 	}
 }
 
 func aboutHandler(w http.ResponseWriter, r *http.Request){
 	err := templates.ExecuteTemplate(w, "about.html", nil)
+
+	if err != nil{
+		log.Fatal(err)
+	}
+}
+func viewProduct(w http.ResponseWriter, r *http.Request) {
+	fullName := r.URL.Path[len("/view/"):]
+	
+	items, _ := db.GetItemBrandModelFull(fullName)
+	
+	product := products.SearchProducts(fullName)[0]
+	
+	type displayInterface struct{
+		Items []database.Item
+		Name string
+		Product products.Product
+	}
+	err := templates.ExecuteTemplate(w, "productDisplay.html", displayInterface{items, fullName,product})
 
 	if err != nil{
 		log.Fatal(err)
