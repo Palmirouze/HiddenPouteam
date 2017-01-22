@@ -3,9 +3,9 @@ package website
 import (
 	"net/http"
 	"gopkg.in/mgo.v2/bson"
-	"github.com/qiniu/log"
 	"../products"
 	"../database"
+	"log"
 )
 
 

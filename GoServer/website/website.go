@@ -8,7 +8,6 @@ import (
 	"../products"
 "html/template"
 "github.com/qiniu/log"
-
 )
 
 
@@ -31,7 +30,6 @@ var templates = template.Must(template.ParseFiles("templates/base.html",
 
 func StartWebsite(){
 
-	//load configuration
 
 
 

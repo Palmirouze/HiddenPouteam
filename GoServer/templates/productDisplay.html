@@ -2,11 +2,13 @@
 
 <body>
 {{template "header" .}}
-<h1>Showing listings for {{.Name}}</h1>
-{{template "product".Product}}
+{{$product := .Product}}
+{{template "product" $product}}
 <br>
 <br>
-<ul>
+
+<ul id="productListings">
+  <h3>Listings</h3>
   {{ range $index, $item := .Items }}
   <li>{{template "item" $item}}</li>
   {{ end }}

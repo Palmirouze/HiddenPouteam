@@ -52,13 +52,24 @@ body{
     padding: 0px;
     margin:0px;
 }
+
 .listing a{
-    padding:5px;
-    transition:0.2s;
+  padding:5px;
+  text-decoration: none;
+  transition:0.2s;
 }
 .listing a:hover{
-    background-color:black;
-    color:white;
+  text-decoration: underline;
+}
+
+.listing a.black{
+  padding:5px;
+  transition:0.2s;
+}
+.listing a.black:hover{
+  background-color:black;
+  color:white;
+  text-decoration: none;
 }
 
 .listing .info{
@@ -82,7 +93,10 @@ a:visited{color:inherit;}
 #priceDisplay {
 
 }
+#productListings h3{
+  text-align:center;
 
+}
 
 /* ----------------------- */
 
