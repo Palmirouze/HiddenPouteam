@@ -35,10 +35,14 @@ func SearchProducts(term string) []Product{
 	var list []Product
 	
 	for _, product := range ProductStatList{
+		shouldAdd := true
 		for _, t := range terms {
-			if (strings.Contains(strings.ToLower(product.FullName), strings.ToLower(t))){
-				list = append(list, product)
+			if (!strings.Contains(strings.ToLower(product.FullName), strings.ToLower(t))){
+				shouldAdd = false
 			}
+		}
+		if(shouldAdd) {
+			list = append(list, product)
 		}
 	}
 	return list
