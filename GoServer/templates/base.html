@@ -50,11 +50,14 @@
 {{define "product"}}
 <a href="/view/{{.FullName}}"><div class="product listing">
     <h2>{{.Model}}from <span style="text-transform: capitalize;">{{.Brand}}</span></h2>
-    <div class="info">
-        <div id="priceDisplay"><b>avg:</b> {{.AveragePriceStr}}$</div>
-         <span class="high"><b> Highest:</b> ${{ .HighestPrice}} </span>,  <span class="low"><b>Lowest:</b> ${{ .LowestPrice}}</span>
 
-         <b>Number of Listings</b>: {{.Num}}
+    <div class="info">
+        <div id="priceDisplay">{{.AveragePriceStr}}$</div>
+        <div id="highLow">
+            <span class="high"><b> Highest:</b> {{ .HighestPrice}}$ </span> <span class="low"><b>Lowest:</b> {{ .LowestPrice}}$</span>
+        Number of Listings: {{.Num}}
+        </div>
+
     </div>
 </div></a>
 
