@@ -45,7 +45,6 @@ body{
 
 .result {
     margin-top: 100px;
-
 }
 
 .listing .high{
@@ -113,7 +112,7 @@ ul {
     color: limegreen;
     text-align: right;
     margin-right: 20px;
-    font: bold 38px Helvetica;
+    font: bold 20px Helvetica;
 }
 
 
