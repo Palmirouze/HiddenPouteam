@@ -149,7 +149,17 @@ a:visited{color:inherit;}
     color: limegreen;
     text-align: right;
     margin-right: 20px;
-    font: bold 20px Helvetica;
+    font: bold 28px Helvetica;
+}
+
+#nameDisplay {
+    font: 22px Helvetica;
+}
+
+#nameDisplay span {
+    color: grey;
+    font-size: 15px;
+    font-style: normal;
 }
 
 

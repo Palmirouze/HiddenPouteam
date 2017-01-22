@@ -49,9 +49,9 @@
 
 {{define "product"}}
 <div class="product listing">
-    <h2><a href="/view/{{.FullName}}">{{.Model}}</a> from <span style="text-transform: capitalize;">{{.Brand}}</span></h2>
+    <h2 id="nameDisplay"><a href="/view/{{.FullName}}">{{.Model}}</a> <span style="text-transform: capitalize;"> {{.Brand}}</span></h2>
     <div class="info">
-        <div id="priceDisplay"><b>avg:</b> {{.AveragePriceStr}}$</div>
+        <div id="priceDisplay">{{.AveragePriceStr}}$</div>
          <span class="high"><b> Highest:</b> ${{ .HighestPrice}} </span>,  <span class="low"><b>Lowest:</b> ${{ .LowestPrice}}</span>
 
          <b>Number of Listings</b>: {{.Num}}
