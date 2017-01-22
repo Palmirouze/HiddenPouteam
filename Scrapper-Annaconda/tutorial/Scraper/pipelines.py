@@ -84,7 +84,7 @@ class KijijiPipeline(object):
             if mod in title:
                 raise DropItem("Better than we expected")
 
-        if price < 50:
+        if price < 500:
             raise DropItem("Price too low")
         elif int(price) <= 0 or title is None or url is None:
             raise DropItem("Missing Data")
@@ -131,7 +131,6 @@ class SizeMetaPipeline(object):
         elif re.search(regex,description):
             match = re.search(regex,description)
             capacity = match.group(0)
-
         if capacity is not None:
             regex = r"([0-9]+)"
             if re.search(regex, capacity):
