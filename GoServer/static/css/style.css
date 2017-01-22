@@ -93,9 +93,13 @@ a:visited{color:inherit;}
 #priceDisplay {
 
 }
-#productListings h3{
+#productListings h2{
   text-align:center;
 
+}
+#productListings h3{
+    padding:0px;
+    margin:0px;
 }
 
 /* ----------------------- */

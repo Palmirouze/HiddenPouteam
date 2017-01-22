@@ -40,8 +40,7 @@
 
 {{define "item"}}
 <div class="listing">
-    <a class="black" href="/item/{{.Id.Hex}}">{{.Title}}</a>
-    <a href="{{.Url}}">View listing on {{.Source}}</a>
+    <a  href="{{.Url}}"><h3>{{.Title}}</h3></a>
     <br /> <b>Price:</b> {{.Price}}$
     <div> From {{.Source}}</div>
     
