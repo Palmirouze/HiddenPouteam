@@ -1,4 +1,5 @@
 import scrapy
+import re
 
 
 class Kijiji_Spider(scrapy.Spider):
@@ -6,29 +7,62 @@ class Kijiji_Spider(scrapy.Spider):
 
     def start_requests(self):
 
-        url_root = 'http://www.kijiji.ca/'
-
-        cells = {
-            'motorola' : ['moto G', 'moto Z', 'G4'],
-            'apple' : ['iPhone 7', 'iPhone 6S', 'iPhone 6', 'iPhone 5S', 'iPhone 5C', 'iPhone 5', 'iPhone 4S', 'iPhone 4'],
-            'blackberry' : ['Curve 9360' , '9720', 'Bold 9900', 'Q5', 'Q10', 'Q20', 'Z10', 'Z30'],
-            'htc' : ['M7', 'M8', 'M9'],
-            'lg' : ['G3', 'G4'],
+        apple = ['iPhone SE', 'iPhone 7', 'iPhone 7 Plus', 'iPhone 5S', 'iPhone 6S', 'iPhone 6S Plus']
+        samsung = ['Galaxy S6', 'Galaxy S5', 'Galaxy S7', 'Galaxy J3', 'Galaxy S7 Edge']
+        lg = ['G3', 'G4', 'G5', 'K4']
+        phones = {
+            'apple' : apple,
+            'samsung' : samsung,
+            'lg' : lg,
         }
 
-        locations = [
-            'grand-montreal',
-        ]
+        for brand in phones:
+            for model in phones[brand]:
+                safe_brand = brand.replace(' ','-')
+                safe_model = model.replace(' ','-')
+                url = 'http://www.kijiji.ca/b-cellulaire/grand-montreal/' + safe_brand + '-' + safe_model + '/k0c760l80002?ad=offering'
+                yield scrapy.Request(url=url, callback=self.parse, )
 
-        for location in locations:
-            for brand in cells:
-                for model in cells[brand]:
-                    url = url_root + '/b-cellulaire/' + location + '/' + brand + '?ad=offering'
-                yield scrapy.Request(url=url, callback=self.parse)
+
 
     def parse(self, response):
-        page = response.url.split("/")[-2]
-        filename = 'quotes-%s.html' % page
-        with open(filename, 'wb') as f:
-            f.write(response.body)
-        self.log('Saved file %s' % filename)
+        objects = response.xpath("//div[@class='info-container']")
+        for obj in objects:
+            price = obj.xpath(".//div[@class='price']/text()").extract_first()
+            title = obj.xpath(".//a[@class='title enable-search-navigation-flag ']/text()").extract_first()
+            url = obj.xpath(".//a[@class='title enable-search-navigation-flag ']/@href").extract_first()
+            location_coarse = obj.xpath(".//div[@class='location']/text()").extract_first()
+            date_posted = obj.xpath(".//span[@class='date-posted']/text()").extract_first()
+            description = obj.xpath(".//div[@class='description']/text()").extract_first()
+            details = obj.xpath(".//div[@class='details']/text()").extract_first()
+            if url is not None:
+                url = response.urljoin(url)
+            yield {
+                    'price': price,
+                    'title': title,
+                    'url': url,
+                    'location_coarse': location_coarse,
+                    'date_posted': date_posted,
+                    'description': description,
+                    'details': details
+            }
+        pagenum = response.xpath("//span[@class='selected']/text()").extract_first()
+        self.log('PAGE: ' + pagenum)
+
+        if(pagenum is None):
+            self.log('ERROR FINDING NEXT PAGE')
+            return
+        self.log('Finished page: ' + pagenum)
+        if int(pagenum) < 2:
+            # follow pagination links
+            next_page_en = response.xpath("//a[@title='Next']/@href").extract_first()
+            next_page_fr = response.xpath("//a[@title='Suivante']/@href").extract_first()
+            if next_page_en is not None:
+                next_page = next_page_en
+            else:
+                next_page = next_page_fr
+            if next_page is not None:
+                next_page = response.urljoin(next_page)
+                yield scrapy.Request(next_page, callback=self.parse)
+            else:
+                self.log('WHUUTT')
