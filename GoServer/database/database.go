@@ -21,8 +21,8 @@ type Database struct{
 
 type Item struct{
 	Id bson.ObjectId `json:"id" bson:"_id,omitempty"`
-	Name string
-	Price float64
+	Title string
+	Price int
 }
 
 //connects to database and return Database
