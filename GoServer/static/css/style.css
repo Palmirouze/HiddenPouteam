@@ -30,6 +30,43 @@ body{
 
 }
 
+
+.listing {
+    height: 100px;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 80%;
+    align-self: center;
+    margin-bottom: 0.25em;
+}
+
+.listing .high{
+    color: red;
+
+}
+
+.listing .low{
+    color: green;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.listing a:link, a:visited {
+    background-color: lightgray;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+a:hover, a:active {
+    background-color: red;
+}
+
 /* ----------------------- */
 
 #submit
