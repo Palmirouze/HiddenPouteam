@@ -2,11 +2,12 @@ body{
     background-color:white;
     margin: 0;
     padding: 0;
+    background-image: url("https://www.lecarredesmedias.fr/img-news/8788.jpg");
 }
 
 .flexContainerHeader {
     display: flex;
-    height: 35px;
+    height: 95px;
     width: 100%;
     background: white;
 }
@@ -38,6 +39,11 @@ body{
     width: 80%;
     align-self: center;
     margin-bottom: 0.25em;
+}
+
+.result {
+    margin-top: 100px;
+
 }
 
 .listing .high{
@@ -87,7 +93,8 @@ ul {
     font: bold 40px Helvetica;
     color: grey;
     text-align: center;
-    margin-top: 17%;
+    margin-top: 13%;
+    color: white;
 }
 
 
