@@ -72,7 +72,7 @@ a{
   text-decoration: none;
   transition:0.2s;
 }
-.listing a h3{
+.listing h3{
     font: 20px Arial, Helvetica;
 }
 
